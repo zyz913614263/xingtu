@@ -112,11 +112,11 @@ class Circle {
         if (!testPoint || !this.point) {
             return false;
         }
-        
+
         const dx = testPoint.currX - this.point.currX;
         const dy = testPoint.currY - this.point.currY;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         return distance <= this.radius;
     }
 
@@ -129,11 +129,11 @@ class Circle {
         if (!testPoint || !this.point) {
             return false;
         }
-        
+
         const dx = testPoint.currX - this.point.currX;
         const dy = testPoint.currY - this.point.currY;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         return distance <= (this.radius + this.radiusBuffer);
     }
 

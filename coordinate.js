@@ -5,6 +5,7 @@ import "./libs/laya.wxmini.js";
 import { syncGameData } from './api.js';
 import { strlen, getSig } from './util.js';
 import Score from './score.js';
+import  util from './util.js';
 
 //const util = __webpack_require__(2);
 //const Score = __webpack_require__(40);

@@ -1,6 +1,6 @@
 // 导入依赖模块
 import musicInstance from './music.js';
-import GuideControl from './guide.js';
+import GuideControls from './guide.js';
 import Light from './light.js';
 
 // 游戏常量
@@ -402,7 +402,7 @@ class AirPlane extends Laya.Sprite {
      */
     start() {
         // 根据引导状态设置初始轨道
-        if (GuideControl._guide) {
+        if (GuideControls._guide) {
             this._radius = this.radius + this.block.circle.border + AIRPLANE_CONSTANTS.PLANE_RADIUS;
         } else {
             this._radius = this.radius + this.block.circle.border - AIRPLANE_CONSTANTS.PLANE_RADIUS;
@@ -440,8 +440,8 @@ class AirPlane extends Laya.Sprite {
      * 动画更新
      */
     animate() {
-        GuideControl.showGuideStep1(this);
-        GuideControl.showGuideStep2(this);
+        GuideControls.showGuideStep1(this);
+        GuideControls.showGuideStep2(this);
 
         this.setPosition();
         this.alpha = 1;
@@ -798,6 +798,9 @@ class AirPlane extends Laya.Sprite {
             }
         }
         return null;
+    }
+    reRender(block, preBlock) {
+        this.jumpCircle(block, preBlock);
     }
 }
 

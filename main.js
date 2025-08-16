@@ -12,7 +12,7 @@ import { Metero, MeteroManager } from './metero.js';
 import { getFriendRank } from './api.js';
 import Coordinate from './coordinate.js';
 import StartUp from './starup.js';
-import GuideControl from './guide.js';
+import GuideControls from './guide.js';
 import UIRender from './uireder.js';
 import Point from './point.js';
 import Circle from './circle.js';
@@ -62,7 +62,7 @@ class Main extends Laya.Sprite {
     constructor() {
         super();
         // 创建引导控制器实例
-        this.guideControl = new GuideControl();
+        this.guideControl = GuideControls;
         this._createCount = 0;
         this.key_id = 0;
         this.maxQiu = 'shui';
@@ -201,7 +201,7 @@ class Main extends Laya.Sprite {
      * 游戏主循环
      */
     main_animation() {
-        console.log('animation');
+        //console.log('animation');
         if (this.air) {
             if (this.air.gameOver) {
                 this.stop();
@@ -441,12 +441,6 @@ class Main extends Laya.Sprite {
      */
     start() {
         console.log('start callback');
-        try {
-            this.main_animation();
-            console.log('手动调用成功');
-        } catch (error) {
-            console.error('手动调用失败:', error);
-        }
         Laya.timer.frameLoop(1, this, this.main_animation);
         // 验证定时器是否启动
         console.log('定时器已启动');

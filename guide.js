@@ -27,14 +27,14 @@ const SCALED_DIMENSIONS = {
 };
 
 // 获取引导状态
-const guideStatus = wx.getStorageSync('guide');
+var guideStatus = wx.getStorageSync('guide');
 let guideClick = guideStatus;
 
 /**
  * 引导控制器
  * 管理游戏引导的显示和隐藏
  */
-class GuideControl {
+class GuideControls {
     constructor() {
         this.status = false;
         this._guide = null;
@@ -445,6 +445,7 @@ class JianTou extends Laya.Sprite {
         this.addChild(img2);
     }
 }
-
+// 创建单例实例
+const GuideControl = new GuideControls();
 // 导出引导控制器
 export default GuideControl;

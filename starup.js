@@ -272,12 +272,14 @@ class StartUp extends Laya.Sprite {
         // 移除点击事件
         this.btnSprite.off('click', this, this.startGame);
 
-        // 播放背景音乐2
-        musicInstance.playBg2();
+        // 播放背景音乐2 这里会卡住
+
+        //musicInstance.playBtn1();
 
         // 销毁UI元素
         this.btnSprite.destroy();
         this.titleSprite.destroy();
+        console.log('startGame end');
     }
 
     /**
@@ -344,7 +346,7 @@ class StartUp extends Laya.Sprite {
      * 主动画循环
      */
     animation() {
-        console.log('animation');
+        //console.log('animation');
         // 检查碰撞
         this.checkCollision();
 

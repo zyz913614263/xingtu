@@ -1,4 +1,4 @@
-import {gameConfig} from './config.js';
+import { gameConfig } from './config.js';
 
 class Music {
     constructor() {
@@ -6,15 +6,15 @@ class Music {
         if (Music.instance) {
             return Music.instance;
         }
-        
+
         this.currIsMute = false;
         Music.instance = this;
-        
+
         // 初始化音量和音乐音量
         Laya.SoundManager.setSoundVolume(1);
         Laya.SoundManager.setMusicVolume(1);
     }
-    
+
     /**
      * 切换音效和音乐静音状态
      * @returns {boolean} 当前音乐静音状态
@@ -22,10 +22,10 @@ class Music {
     tmp3leMute() {
         Laya.SoundManager.musicMuted = !Laya.SoundManager.musicMuted;
         Laya.SoundManager.soundMuted = !Laya.SoundManager.soundMuted;
-        
+
         return Laya.SoundManager.musicMuted;
     }
-    
+
     /**
      * 音乐和音效静音
      */
@@ -34,7 +34,7 @@ class Music {
         Laya.SoundManager.soundMuted = true;
         this.currIsMute = true;
     }
-    
+
     /**
      * 取消静音
      */
@@ -43,7 +43,7 @@ class Music {
         Laya.SoundManager.soundMuted = false;
         this.currIsMute = false;
     }
-    
+
     /**
      * 播放背景音乐（开始）
      */
@@ -54,25 +54,29 @@ class Music {
             0
         );
     }
-    
+
+
+
     /**
      * 播放背景音乐（游戏进行中）
      */
-    playBg2() {
-        Laya.SoundManager.playMusic(
-            gameConfig.PREFIX_URL + 'music/new/bg1.mp3',
-            0
-        );
-        
+    playStart() {
         // 销毁开始音乐，释放内存
-        Laya.SoundManager.destroySound(gameConfig.PREFIX_URL + 'music/start-32.mp3');
-        
+        //Laya.SoundManager.destroySound(gameConfig.PREFIX_URL + 'music/start-32.mp3');
+        /*Laya.SoundManager.playMusic(
+            gameConfig.PREFIX_URL + 'music/new/bg1.mp3',
+            1
+        );*/
+        playBtn()
+
+
+
         // 触发垃圾回收（微信小游戏）
         if (wx.triggerGC) {
             wx.triggerGC();
         }
     }
-    
+
     /**
      * 播放成功音效
      */
@@ -82,7 +86,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放能量音效
      */
@@ -92,7 +96,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放连击音效
      */
@@ -102,7 +106,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放爆炸音效
      */
@@ -112,7 +116,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放按钮音效
      */
@@ -122,7 +126,13 @@ class Music {
             1
         );
     }
-    
+    playBtn1() {
+        Laya.SoundManager.playSound(
+            gameConfig.PREFIX_URL + 'music/btn.mp3',
+            0
+        );
+    }
+
     /**
      * 播放飞行音效
      */
@@ -132,7 +142,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放死亡音效
      */
@@ -142,7 +152,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放羁绊音效
      */
@@ -152,7 +162,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放好友音效
      */
@@ -162,7 +172,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放时间音效
      */
@@ -172,7 +182,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放结果音效
      */
@@ -182,7 +192,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放转场音效（进入）
      */
@@ -192,7 +202,7 @@ class Music {
             1
         );
     }
-    
+
     /**
      * 播放转场音效（退出）
      */
