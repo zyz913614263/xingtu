@@ -1,4 +1,4 @@
-import gameConfig from './config.js';
+import {gameConfig} from './config.js';
 
 class Music {
     constructor() {
@@ -48,6 +48,7 @@ class Music {
      * 播放背景音乐（开始）
      */
     playBg() {
+        console.log(gameConfig.PREFIX_URL + 'music/start-32.mp3')
         Laya.SoundManager.playMusic(
             gameConfig.PREFIX_URL + 'music/start-32.mp3',
             0
@@ -59,7 +60,7 @@ class Music {
      */
     playBg2() {
         Laya.SoundManager.playMusic(
-            gameConfig.PREFIX_URL + 'music/bg1.mp3',
+            gameConfig.PREFIX_URL + 'music/new/bg1.mp3',
             0
         );
         
@@ -167,7 +168,7 @@ class Music {
      */
     playTime() {
         Laya.SoundManager.playSound(
-            gameConfig.PREFIX_URL + 'music/time1.mp3',
+            gameConfig.PREFIX_URL + 'music/new/time1.mp3',
             1
         );
     }
@@ -177,7 +178,7 @@ class Music {
      */
     playResult() {
         Laya.SoundManager.playSound(
-            gameConfig.PREFIX_URL + 'music/score1.mp3',
+            gameConfig.PREFIX_URL + 'music/new/score1.mp3',
             1
         );
     }
@@ -187,7 +188,7 @@ class Music {
      */
     playZhuan() {
         Laya.SoundManager.playSound(
-            gameConfig.PREFIX_URL + 'music/in1.mp3',
+            gameConfig.PREFIX_URL + 'music/new/in1.mp3',
             1
         );
     }
@@ -197,7 +198,7 @@ class Music {
      */
     playZhuan1() {
         Laya.SoundManager.playSound(
-            gameConfig.PREFIX_URL + 'music/out1.mp3',
+            gameConfig.PREFIX_URL + 'music/new/out1.mp3',
             1
         );
     }

@@ -1,11 +1,25 @@
 {
-    "description": "项目配置文件。",
+    "description": "消消乐",
     "setting": {
         "urlCheck": false,
-        "es6": false,
-        "postcss": false,
-        "minified": false,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
         "newFeature": true,
+        "compileWorklet": false,
+        "uglifyFileName": false,
+        "uploadWithSourceMap": true,
+        "enhance": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "minifyWXML": true,
+        "localPlugins": false,
+        "disableUseStrict": false,
+        "useCompilerPlugins": false,
+        "condition": false,
+        "swc": false,
+        "disableSWC": true,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
@@ -13,11 +27,28 @@
         }
     },
     "compileType": "game",
-    "libVersion": "3.9.0",
-    "appid": "wxa6fc51769fa7b6b6",
-    "projectname": "333",
-    "miniprogramRoot": "",
-    "condition": {},
+    "libVersion": "",
+    "appid": "wx79ef1796813d6ab0",
+    "projectname": "%E6%B6%88%E9%99%A4%E6%8D%95%E9%B1%BC",
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": -1,
+            "list": []
+        }
+    },
+    "simulatorPluginLibVersion": {},
     "packOptions": {
         "ignore": [],
         "include": []
