@@ -55,8 +55,8 @@ class StartUp extends Laya.Sprite {
      */
     init() {
         // 播放背景音乐
-        //musicInstance.playBg();
-        musicInstance.playStart();
+        musicInstance.playBg();
+        //musicInstance.playStart();
 
         // 渲染界面元素
         this.renderEnergyPoint();
@@ -275,7 +275,7 @@ class StartUp extends Laya.Sprite {
 
         // 播放背景音乐2 这里会卡住
 
-        //musicInstance.playStart();
+        musicInstance.playStart();
 
         // 销毁UI元素
         this.btnSprite.destroy();
