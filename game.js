@@ -1,16 +1,16 @@
-import "./weapp-adapter.js";
+import "./libs/weapp-adapter.js";
 import "./libs/laya.core.js";
 import "./libs/laya.wxmini.js";
 import "./libs/laya.webgl.js";
 import "./libs/laya.ani.js";
 import "./libs/laya.filter.js";
 import "./libs/laya.ui.js";
-import { gameConfig, infoList } from "./config.js";
-import musicInstance from "./music.js";
+import { gameConfig, infoList } from "./js/config.js";
+import musicInstance from "./js/music.js";
 const protobuf = require('./libs/protobuf.js');
-import { Metero, MeteroManager } from './metero.js';
-import Main from './main.js';
-import Coordinate from './coordinate.js';
+import { Metero, MeteroManager } from './js/metero.js';
+import Main from './js/main.js';
+import Coordinate from './js/coordinate.js';
 
 const EventEmitter = protobuf.util.EventEmitter;
 

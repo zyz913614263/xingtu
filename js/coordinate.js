@@ -1,7 +1,7 @@
 // 导入依赖模块
 import { gameConfig } from "./config.js";
-import "./libs/laya.core.js";
-import "./libs/laya.wxmini.js";
+import "../libs/laya.core.js";
+import "../libs/laya.wxmini.js";
 import { syncGameData } from './api.js';
 import { strlen, getSig } from './util.js';
 import Score from './score.js';

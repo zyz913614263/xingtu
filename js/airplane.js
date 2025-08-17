@@ -804,8 +804,6 @@ class AirPlane extends Laya.Sprite {
         this.jumpCircle(block, preBlock);
     }
     _destory() {
-
-
         if (this.type == 'rewards') {
             this._times = 0;
             this.rewardsDead();
@@ -817,7 +815,7 @@ class AirPlane extends Laya.Sprite {
 
         this.stop();
         setTimeout(function (res) {
-            window._Event.emit(_this3.type == 'rewards' ? 'end_rewards' : 'dead', Date.now());
+            window._Event.emit(this.type == 'rewards' ? 'end_rewards' : 'dead', Date.now());
         }, 400);
     }
 }

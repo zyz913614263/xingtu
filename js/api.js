@@ -1,5 +1,5 @@
 import login from './login.js';
-import Promise from './libs/es6-promise.js';
+import Promise from '../libs/es6-promise.js';
 
 // 应用实例
 const app = {};
