@@ -1,10 +1,4 @@
-import "../libs/weapp-adapter.js";
-import "../libs/laya.core.js";
-import "../libs/laya.wxmini.js";
-import "../libs/laya.webgl.js";
-import "../libs/laya.ani.js";
-import "../libs/laya.filter.js";
-import "../libs/laya.ui.js";
+
 import { gameConfig, infoList } from "./config.js";
 import musicInstance from "./music.js";
 const protobuf = require('../libs/protobuf.js');

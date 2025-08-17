@@ -1,6 +1,4 @@
 import { gameConfig } from "./config.js";
-import "../libs/laya.core.js";
-import "../libs/laya.wxmini.js";
 const WID = 91 * window.devicePixelRatio;
 const HEI = 207 * window.devicePixelRatio;
 
