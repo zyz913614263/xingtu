@@ -327,8 +327,8 @@ class Rewards extends Laya.Sprite {
      * 结束奖励
      */
     endRewards() {
-        window._Event.removeListener('end_rewards');
-        window._Event.removeListener('start_rewards');
+        window._Event.off('end_rewards');
+        window._Event.off('start_rewards');
         this.destroy();
         window._Event.emit('go_on');
     }
@@ -524,31 +524,25 @@ class Rewards extends Laya.Sprite {
      * @returns {Object} 区块对象
      */
     createBlock(planet, index) {
-        let point, circle;
-
-        if (this.blocks.length > 0) {
-            const pointObj = this.getNextPoint(this.getLastBlock().circle, planet.radius, planet.angle);
-            point = pointObj.nextPoint;
-            circle = this.createCircle(point, planet.radius);
+        if (this.blocks.length) {
+            var pointObj = this.getNextPoint(this.getLastBlock().circle, planet.radius, planet.angle);
+            var point = pointObj.nextPoint;
+            var circle = this.createCircle(point, planet.radius);
         } else {
-            point = this.createPoint();
-            circle = this.createCircle(point, planet.radius);
+            var point = this.createPoint();
+            var circle = this.createCircle(point, planet.radius);
         }
 
-        const block = new Block(circle, point, '', planet, index);
+        var block = new Block(circle, point, '', planet, index);
 
         if (index > 0) {
-            const preBlock = this.getPreBlock(index);
-            if (!preBlock) return block;
+            var preBlock = this.getPreBlock(index);
 
-            const cutOffPoint = this.createCutOffPoint(
-                pointObj.cutOffPoint.currX,
-                pointObj.cutOffPoint.currY,
-                [preBlock.keyId, block.keyId]
-            );
+            if (!preBlock) return;
+            var _cutOffPoint = this.createCutOffPoint(pointObj.cutOffPoint.currX, pointObj.cutOffPoint.currY, [preBlock.key_id, block.key_id]);
 
-            preBlock.addCutOffPoints(cutOffPoint);
-            block.addCutOffPoints(cutOffPoint);
+            preBlock.addCutOffPoints(_cutOffPoint);
+            block.addCutOffPoints(_cutOffPoint);
         }
 
         this.blocks.push(block);

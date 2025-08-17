@@ -1,3 +1,4 @@
+import { gameConfig } from './config.js';
 /**
  * 计时器类 - 显示游戏倒计时
  * Timer class - displays game countdown
@@ -27,8 +28,8 @@ class Timer extends Laya.Sprite {
         super();
 
         // 设置尺寸
-        this.width = config.default.GameWidth;
-        this.height = config.default.GameHeight;
+        this.width = gameConfig.GameWidth;
+        this.height = gameConfig.GameHeight;
 
         // 初始化UI
         this.initUI();

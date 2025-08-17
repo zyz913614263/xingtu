@@ -517,10 +517,12 @@ class Main extends Laya.Sprite {
                 Math.pow(this.air.plane.x - this.currentBlock.cutOffPoints[i].currX, 2) +
                 Math.pow(this.air.plane.y - this.currentBlock.cutOffPoints[i].currY, 2)
             );
-
-            if (distance < IN_SIDE_EDGE_DISTANCE) {
+            if (i == this.currentBlock.cutOffPoints.length - 1) {
                 return this.currentBlock.cutOffPoints[i];
             }
+            //if (distance < IN_SIDE_EDGE_DISTANCE) {
+            //   return this.currentBlock.cutOffPoints[i];
+            //}
         }
         return false;
     }

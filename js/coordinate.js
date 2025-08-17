@@ -48,7 +48,7 @@ class Coordinate extends Laya.Sprite {
         this.energeNum = 0;          // 能量宝石数量
         this.maxCombo = 0;           // 最大连击数
         this.rewardEnergeNum = 0;    // 奖励能量宝石数量
-        this.maxBaoshi = 10;         // 最大宝石数量
+        this.maxBaoshi = 100;         // 最大宝石数量
     }
 
     /**

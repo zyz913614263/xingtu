@@ -191,7 +191,7 @@ class AirPlane extends Laya.Sprite {
     addProtectiveLayer() {
         const sp = new Laya.Sprite();
         sp.graphics.loadImage(
-            'https://wximg.qq.com/wxgame/temp/d558e69de270dd8ce38301f5b7ed141d.png',
+            'res/baohuceng.png',
             -AIRPLANE_CONSTANTS.IMG_WIDTH / AIRPLANE_CONSTANTS.IMAGE_ZOOM / 2 - 1,
             -AIRPLANE_CONSTANTS.IMG_HEIGHT / AIRPLANE_CONSTANTS.IMAGE_ZOOM / 2 + 1,
             106 / AIRPLANE_CONSTANTS.IMAGE_ZOOM,
