@@ -21,11 +21,10 @@ const Config = {
 const isInWechatApp = !!(window.navigator.userAgent.indexOf('Ejecta') > -1);
 
 // 导入登录模块
-//const login = __webpack_require__(48);
-//const Promise = __webpack_require__(34);
+
 
 // 准备登录
-//login.prepare(app, Config);
+login.prepare(app, Config);
 //console.log('当前用户openid:', app.session().openid);
 
 /**

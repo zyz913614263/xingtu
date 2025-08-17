@@ -271,7 +271,7 @@ class AirPlane extends Laya.Sprite {
      */
     destroyPassedBlocks() {
         if (this.block.keyId > AIRPLANE_CONSTANTS.START_INDEX) {
-            const blockToDestroy = this.blocks[this.block.keyId - AIRPLANE_CONSTANTS.START_INDEX - 1];
+            var blockToDestroy = this.blocks[this.block.keyId - AIRPLANE_CONSTANTS.START_INDEX - 1];
 
             if (blockToDestroy._destroy || !blockToDestroy.planetUI) {
                 return;
@@ -417,7 +417,7 @@ class AirPlane extends Laya.Sprite {
     /**
      * 重新启动
      */
-    restart() {
+    reStart() {
         this.status = '';
         Laya.timer.frameLoop(AIRPLANE_CONSTANTS.ANIMATION_FRAME_RATE, this, this.animate);
         Laya.timer.frameLoop(AIRPLANE_CONSTANTS.CHECK_FRAME_RATE, this, this.checkAnimation);

@@ -2,9 +2,7 @@ import { strToMap, mapToStr } from './strings.js';
 import request from './deeprequest.js';
 import LineQueue from './linequeue.js';
 // 导入依赖模块
-//const Deeprequest = __webpack_require__(46);
-//const Strings = __webpack_require__(47);
-//const LineQueue = __webpack_require__(45);
+
 
 /**
  * 会话管理对象
@@ -333,6 +331,8 @@ export default {
         baseContext = context;
 
         // 执行登录
+        //使用 call(context)确保 Loginer.login方法内的 this指向正确，避免因调用方不同而丢失上下文
+        //this明确指向 context参数
         Loginer.login.call(context);
 
         // 注入方法到context
