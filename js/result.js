@@ -4,6 +4,7 @@ import Rank from './rank.js';
 import { gameConfig } from './config.js';
 import musicInstance from './music.js';
 import { drawShareCanvas } from './sharecanvas.js';
+import { getSig } from './util.js';
 
 
 

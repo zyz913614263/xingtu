@@ -465,6 +465,9 @@ class Rewards extends Laya.Sprite {
      * @returns {Object} 前一个区块
      */
     getPreBlock(index) {
+        if (index == 0) {
+            return this.blocks[0]
+        }
         return this.blocks[index - 1];
     }
 
@@ -539,7 +542,7 @@ class Rewards extends Laya.Sprite {
             var preBlock = this.getPreBlock(index);
 
             if (!preBlock) return;
-            var _cutOffPoint = this.createCutOffPoint(pointObj.cutOffPoint.currX, pointObj.cutOffPoint.currY, [preBlock.key_id, block.key_id]);
+            var _cutOffPoint = this.createCutOffPoint(pointObj.cutOffPoint.currX, pointObj.cutOffPoint.currY, [preBlock.keyId, block.keyId]);
 
             preBlock.addCutOffPoints(_cutOffPoint);
             block.addCutOffPoints(_cutOffPoint);

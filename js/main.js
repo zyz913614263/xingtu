@@ -20,12 +20,7 @@ import Block from './block.js';
 import Airplane from './airplane.js';
 import CutOffPoint from './cutOffPoint.js';
 import Result from './result.js';
-//import PK from './pk.js';
-//import Result from './result.js';
-
-
-// 导入依赖模块
-//const PK = __webpack_require__(18);
+import PkRank from './pk.js';
 
 
 
@@ -255,7 +250,7 @@ class Main extends Laya.Sprite {
 
         if (window._pk_user_game_id) {
             if (!window._pkRank) {
-                window._pkRank = new PK.default();
+                window._pkRank = new PkRank();
                 window.stage.addChild(window._pkRank);
             }
             window._pkRank.initData(window.query, window.group_info, () => { }, {
@@ -517,12 +512,13 @@ class Main extends Laya.Sprite {
                 Math.pow(this.air.plane.x - this.currentBlock.cutOffPoints[i].currX, 2) +
                 Math.pow(this.air.plane.y - this.currentBlock.cutOffPoints[i].currY, 2)
             );
-            if (i == this.currentBlock.cutOffPoints.length - 1) {
+            //点击自动跳到下一个
+            //if (i == this.currentBlock.cutOffPoints.length - 1) {
+            //    return this.currentBlock.cutOffPoints[i];
+            //}
+            if (distance < IN_SIDE_EDGE_DISTANCE) {
                 return this.currentBlock.cutOffPoints[i];
             }
-            //if (distance < IN_SIDE_EDGE_DISTANCE) {
-            //   return this.currentBlock.cutOffPoints[i];
-            //}
         }
         return false;
     }
