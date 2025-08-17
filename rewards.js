@@ -476,7 +476,7 @@ class Rewards extends Laya.Sprite {
     getNextBlock(currentCutOffPoint) {
         for (let i = 0; i < currentCutOffPoint.blocks.length; i++) {
             const blockId = currentCutOffPoint.blocks[i];
-            if (blockId !== this.currentBlock.key_id) {
+            if (blockId !== this.currentBlock.keyId) {
                 return this.getBlockByKeyId(blockId);
             }
         }
@@ -489,7 +489,7 @@ class Rewards extends Laya.Sprite {
      * @returns {Object} 区块对象
      */
     getBlockByKeyId(id) {
-        return this.blocks.find(block => block.key_id === id);
+        return this.blocks.find(block => block.keyId === id);
     }
 
     /**
@@ -544,7 +544,7 @@ class Rewards extends Laya.Sprite {
             const cutOffPoint = this.createCutOffPoint(
                 pointObj.cutOffPoint.currX,
                 pointObj.cutOffPoint.currY,
-                [preBlock.key_id, block.key_id]
+                [preBlock.keyId, block.keyId]
             );
 
             preBlock.addCutOffPoints(cutOffPoint);

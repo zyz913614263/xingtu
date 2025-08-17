@@ -202,4 +202,4 @@ function reportPKRank(data) {
     });
 }
 
-export { syncGameData, getFriendRank, createPkRoom, getPkRoomInfo, getGroupRank, reportPKRank };
+export { syncGameData, getFriendRank, createPkRoom, getPkRoomInfo, getGroupRank, reportPKRank, app };

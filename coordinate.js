@@ -5,7 +5,6 @@ import "./libs/laya.wxmini.js";
 import { syncGameData } from './api.js';
 import { strlen, getSig } from './util.js';
 import Score from './score.js';
-import  util from './util.js';
 
 //const util = __webpack_require__(2);
 //const Score = __webpack_require__(40);
@@ -85,7 +84,7 @@ class Coordinate extends Laya.Sprite {
     /**
      * 添加能量数量
      */
-    addEnergeNum(value) {
+    addEnergyNum(value) {
         this.energeNum += value;
         this.drawEnergeNumber(this.energeNum + this.rewardEnergeNum);
         this.changeProcess(this.energeNum);
@@ -94,7 +93,7 @@ class Coordinate extends Laya.Sprite {
     /**
      * 添加奖励能量数量
      */
-    addRewardEnergeNum(value) {
+    addRewardEnergyNum(value) {
         this.rewardEnergeNum += value;
         this.drawEnergeNumber(this.energeNum + this.rewardEnergeNum);
     }
@@ -374,7 +373,7 @@ class Coordinate extends Laya.Sprite {
             appid: 'wx7a727ff7d940bb3f',
             game_behav_list: data,
             sync_type: window._pk_user_game_id ? 2 : 1,
-            sig: util.getSig(data),
+            sig: getSig(data),
             use_time: Math.ceil((Date.now() - this.use_time) / 1000)
         };
 
@@ -382,7 +381,7 @@ class Coordinate extends Laya.Sprite {
             params.user_game_id = window._pk_user_game_id;
         }
 
-        API.syncGameData(params).then(res => {
+        syncGameData(params).then(res => {
             if (res.errcode !== 0) {
                 wx.getNetworkType({
                     success: (res) => {

@@ -19,13 +19,13 @@ import Circle from './circle.js';
 import Block from './block.js';
 import Airplane from './airplane.js';
 import CutOffPoint from './cutOffPoint.js';
+import Result from './result.js';
 //import PK from './pk.js';
 //import Result from './result.js';
 
 
 // 导入依赖模块
 //const PK = __webpack_require__(18);
-//const Result = __webpack_require__(10);
 
 
 
@@ -64,7 +64,7 @@ class Main extends Laya.Sprite {
         // 创建引导控制器实例
         this.guideControl = GuideControls;
         this._createCount = 0;
-        this.key_id = 0;
+        this.Id = 0;
         this.maxQiu = 'shui';
         this[privateProps.blocks] = [];
 
@@ -276,7 +276,7 @@ class Main extends Laya.Sprite {
             this.resultSprite.reset(resultData);
             this.resultSprite.visible = true;
         } else {
-            this.resultSprite = new Result.default(resultData);
+            this.resultSprite = new Result(resultData);
             window.stage.addChild(this.resultSprite);
         }
     }
@@ -287,7 +287,7 @@ class Main extends Laya.Sprite {
     reset() {
         this.y = 600 * window.devicePixelRatio;
         this.x = 0;
-        this.key_id = 0;
+        this.Id = 0;
         this._createCount = 0;
         this._passHeiDong = false;
 
@@ -380,7 +380,7 @@ class Main extends Laya.Sprite {
                 this.addObstacleRandom(planetCopy);
             }
 
-            const block = this.createBlock(planetCopy, this.key_id++);
+            const block = this.createBlock(planetCopy, this.Id++);
             if (block.blockInfo.url === 'hei') {
                 this._passHeiDong = true;
             }
@@ -491,7 +491,7 @@ class Main extends Laya.Sprite {
     getNextBlock(currentCutOffPoint) {
         for (let i = 0; i < currentCutOffPoint.blocks.length; i++) {
             const blockId = currentCutOffPoint.blocks[i];
-            if (blockId !== this.currentBlock.key_id) {
+            if (blockId !== this.currentBlock.keyId) {
                 return this.getBlockByKeyId(blockId);
             }
         }
@@ -502,7 +502,7 @@ class Main extends Laya.Sprite {
      */
     getBlockByKeyId(id) {
         for (let i = 0; i < this[privateProps.blocks].length; i++) {
-            if (id === this[privateProps.blocks][i].key_id) {
+            if (id === this[privateProps.blocks][i].keyId) {
                 return this[privateProps.blocks][i];
             }
         }
@@ -535,7 +535,7 @@ class Main extends Laya.Sprite {
         //console.log('planetMap', planetMap);
         const planet = JSON.parse(JSON.stringify(planetMap[type]));
         console.log('planet', planet);
-        this.createBlock(planet, this.key_id++);
+        this.createBlock(planet, this.Id++);
     }
 
     /**
@@ -670,7 +670,7 @@ class Main extends Laya.Sprite {
         const cutOffPoint = this.createCutOffPoint(
             pointObj.cutOffPoint.currX,
             pointObj.cutOffPoint.currY,
-            [preBlock.key_id, block.key_id]
+            [preBlock.keyId, block.keyId]
         );
 
         // 为前后区块添加切断点

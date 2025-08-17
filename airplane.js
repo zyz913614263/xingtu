@@ -2,6 +2,7 @@
 import musicInstance from './music.js';
 import GuideControls from './guide.js';
 import Light from './light.js';
+import Combo from './combo.js';
 
 // 游戏常量
 const AIRPLANE_CONSTANTS = {
@@ -224,10 +225,10 @@ class AirPlane extends Laya.Sprite {
         this.block = block;
         this.getNextPreBlockArr();
         this.radius = block.circle.radius;
-        this.direction = block.key_id % 2 ? DIRECTION.COUNTERCLOCKWISE : DIRECTION.CLOCKWISE;
+        this.direction = block.keyId % 2 ? DIRECTION.COUNTERCLOCKWISE : DIRECTION.CLOCKWISE;
 
         // 向上移动
-        if ((preBlock?.key_id || -1) < block.key_id) {
+        if ((preBlock?.keyId || -1) < block.keyId) {
             const angle = block.blockInfo.angle || 0;
 
             if (this.direction === DIRECTION.COUNTERCLOCKWISE) {
@@ -259,7 +260,7 @@ class AirPlane extends Laya.Sprite {
         this._radius = this.radius - this.block.circle.border - AIRPLANE_CONSTANTS.PLANE_RADIUS;
 
         if (this.type !== 'rewards') {
-            window.coordinate.addLightYear(this.block.key_id);
+            window.coordinate.addLightYear(this.block.keyId);
             this.level++;
             this.destroyPassedBlocks();
         }
@@ -269,8 +270,8 @@ class AirPlane extends Laya.Sprite {
      * 销毁已通过的区块
      */
     destroyPassedBlocks() {
-        if (this.block.key_id > AIRPLANE_CONSTANTS.START_INDEX) {
-            const blockToDestroy = this.blocks[this.block.key_id - AIRPLANE_CONSTANTS.START_INDEX - 1];
+        if (this.block.keyId > AIRPLANE_CONSTANTS.START_INDEX) {
+            const blockToDestroy = this.blocks[this.block.keyId - AIRPLANE_CONSTANTS.START_INDEX - 1];
 
             if (blockToDestroy._destroy || !blockToDestroy.planetUI) {
                 return;
@@ -321,7 +322,7 @@ class AirPlane extends Laya.Sprite {
     getFlyScore(x, y, direction) {
         const playCombo = () => {
             if (combo > 1) {
-                const comboObj = Laya.Pool.getItemByClass("Combo", combo.default);
+                const comboObj = Laya.Pool.getItemByClass("Combo", Combo);
                 const offsetX = direction === DIRECTION.COUNTERCLOCKWISE ? -20 : 20;
 
                 comboObj.pos(
@@ -538,10 +539,10 @@ class AirPlane extends Laya.Sprite {
     getNextPreBlockArr() {
         let index = 0;
 
-        if (this.block.key_id === 1) {
+        if (this.block.keyId === 1) {
             this.blockArr = this.blocks.slice(index, index + 2);
         } else {
-            index = this.block.key_id - 1;
+            index = this.block.keyId - 1;
             this.blockArr = this.blocks.slice(index - 1, index + 2);
         }
     }
@@ -793,7 +794,7 @@ class AirPlane extends Laya.Sprite {
      */
     get nextBlock() {
         for (let i = 0; i < this.blocks.length; i++) {
-            if (this.blocks[i].key_id === this.block.key_id + 1) {
+            if (this.blocks[i].keyId === this.block.keyId + 1) {
                 return this.blocks[i];
             }
         }
@@ -801,6 +802,23 @@ class AirPlane extends Laya.Sprite {
     }
     reRender(block, preBlock) {
         this.jumpCircle(block, preBlock);
+    }
+    _destory() {
+
+
+        if (this.type == 'rewards') {
+            this._times = 0;
+            this.rewardsDead();
+        } else {
+            this.plane.graphics.clear();
+            this.startDead();
+        }
+        this.gameOver = 1;
+
+        this.stop();
+        setTimeout(function (res) {
+            window._Event.emit(_this3.type == 'rewards' ? 'end_rewards' : 'dead', Date.now());
+        }, 400);
     }
 }
 

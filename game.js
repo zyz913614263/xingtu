@@ -14,6 +14,34 @@ import Coordinate from './coordinate.js';
 
 const EventEmitter = protobuf.util.EventEmitter;
 
+
+
+window._shareInfo = {
+    title: '星途，穿越未知银河道途',
+    imageUrl: gameConfig.PREFIX_URL + 'result/sharebanner2.png',
+    query: 'share=1',
+    success: function success(res) {
+        console.error(res);
+    },
+    fail: function fail(res) {
+        console.error(res);
+    },
+    complete: function complete(res) {
+        console.error(res);
+    }
+};
+window._GC = function () {
+    Laya.ResourceManager._systemResourceManager.garbageCollection();
+    wx.triggerGC && wx.triggerGC();
+};
+
+wx.showShareMenu && wx.showShareMenu({
+    withShareTicket: true
+});
+
+wx.onShareAppMessage && wx.onShareAppMessage(function () {
+    return window._shareInfo;
+});
 console.log("RUN")
 console.log(gameConfig)
 console.log(infoList)
@@ -22,14 +50,16 @@ console.log(infoList)
 Laya.MiniAdpter.init();
 
 
-//musicInstance.playBg2()
 
 // Laya.Config.isAntialias = true;
 // 0：正常，1：结果， 2：好友排行， 3：群排行， 4：pk
 window._game_status = 0;
 
 Laya.init(gameConfig.GameWidth, gameConfig.GameHeight, Laya.WebGL);
+
 //musicInstance.playBg()
+//musicInstance.playStart();
+
 var scaleX = window.innerWidth * window.devicePixelRatio / gameConfig.GameWidth;
 var scaleY = window.innerHeight * window.devicePixelRatio / gameConfig.GameHeight;
 
